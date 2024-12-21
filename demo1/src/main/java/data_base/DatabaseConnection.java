@@ -7,7 +7,7 @@ public class DatabaseConnection {
     public Connection databaseLink;
 
     public Connection getConnection() {
-        String URL="jdbc:sqlite:C://Users//mateu//IdeaProjects//project_po//demo1//login_data_base.sqlite";
+        String URL="jdbc:sqlite:login_data_base.sqlite";
         try{
             Class.forName("org.sqlite.JDBC");
             databaseLink = DriverManager.getConnection(URL);
