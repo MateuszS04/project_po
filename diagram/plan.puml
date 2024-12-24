@@ -17,12 +17,12 @@ Klient --> (Stwórz Konto)
 Klient --> (Przeglądaj Asortyment)
 (Przeglądaj Asortyment) --> BazaMagazyn : Odczyt danych produktów
 
-Klient --> (Złóż Zamówienie)
-(Złóż Zamówienie) --> BazaMagazyn : Sprawdzenie dostępności produktów
-(Złóż Zamówienie) --> BazaZamowienia : Zapis zamówienia
+Klient --> (Asortyment do przechowania)
+(Asortyment do przechowania) --> BazaMagazyn : Sprawdzenie dostępności produktów
+(Asortyment do przechowania) --> BazaZamowienia : Zapis zamówienia
 
-Klient --> (Pokaż Sumę Zamówienia)
-(Pokaż Sumę Zamówienia) --> BazaZamowienia : Odczyt ceny zamówienia
+Klient --> (Pokaż Sumę twoich produktów w magazynie)
+(Pokaż Sumę twoich produktów w magazynie) --> BazaZamowienia : Odczyt ceny zamówienia
 
 ' System Pracowniczy interakcje
 SystemPracowniczy --> (Logowanie)

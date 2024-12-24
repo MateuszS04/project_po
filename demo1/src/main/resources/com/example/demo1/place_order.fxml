@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo1.PlaceOrder"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CustomerStorageController">
+    <top>
+        <AnchorPane prefHeight="103.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="185.0" layoutY="43.0" text="Dodaj swoje przedmioty do rzechowywania" />
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="25.0" layoutY="52.0" text="Data rozpoczęcia magazynowania" />
+                <Label layoutX="475.0" layoutY="52.0" />
+                <Label layoutX="253.0" layoutY="52.0" text="Liczba dni na przechowanie" />
+                <Label layoutX="484.0" layoutY="52.0" prefHeight="17.0" prefWidth="30.0" text="login" />
+                <TextField fx:id="Date_of_beginning" layoutX="41.0" layoutY="102.0" />
+                <TextField fx:id="Days_in_storage" layoutX="244.0" layoutY="102.0" />
+                <TextField fx:id="Login" layoutX="424.0" layoutY="102.0" />
+            <Button layoutX="285.0" layoutY="227.0" mnemonicParsing="false" text="Save" onAction="#SaveOnActionButton" />
+            <Label fx:id="message" layoutX="206.0" layoutY="158.0" prefHeight="17.0" prefWidth="226.0" />
+            <Label layoutX="41.0" layoutY="150.0" text="Wybierz wielkość powierzchni magazynowej" />
+            <ChoiceBox fx:id="Storage_size" layoutX="340.0" layoutY="146.0" prefWidth="150.0" />
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
