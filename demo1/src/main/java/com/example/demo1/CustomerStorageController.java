@@ -55,6 +55,33 @@ private TextField Login;
         String login=Login.getText();
         String storage_size=Storage_size.getValue();
 
+        int max_storage=switch(storage_size){
+            case "Small"->30;
+            case "medium"->20;
+            case "Large"->10;
+            default -> 0;
+        };
+
+        String countQuery="Select count(*) from storage where storage_size=?";
+        try(PreparedStatement pstm= connection.prepareStatement(countQuery)){
+            pstm.setString(1,storage_size);
+            ResultSet rs=pstm.executeQuery();
+            int count=0;
+            if(rs.next()){
+                count=rs.getInt(1);
+            }
+
+            if (storage_size.equals("Large")&& count>max_storage) {
+                message.setText("Storage limit reached for"+storage_size+"size");
+                return;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            message.setText("Error while checking storage size");
+        }
+
+
+
         String insert_commodity= "Insert into storage(date_of_beginning,days_in_storage,login,storage_size) values(?,?,?,?)";
 
         try(PreparedStatement prptstm= connection.prepareStatement(insert_commodity))

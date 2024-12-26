@@ -18,8 +18,8 @@ Klient --> (Przeglądaj Asortyment)
 (Przeglądaj Asortyment) --> BazaMagazyn : Odczyt danych produktów
 
 Klient --> (Asortyment do przechowania)
-(Asortyment do przechowania) --> BazaMagazyn : Sprawdzenie dostępności produktów
-(Asortyment do przechowania) --> BazaZamowienia : Zapis zamówienia
+(Asortyment do przechowania) --> BazaMagazyn : Sprawdzenie dostępności miejsca do przechowywania
+(Asortyment do przechowania) --> BazaZamowienia : Zapis zamówienia na przestrzeń do przechowywania
 
 Klient --> (Pokaż Sumę twoich produktów w magazynie)
 (Pokaż Sumę twoich produktów w magazynie) --> BazaZamowienia : Odczyt ceny zamówienia
