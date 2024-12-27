@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86a80a61-703f-4369-ab1e-900ee3efd9b9" name="Changes" comment="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować ajko takie minimum" />
+    <list default="true" id="86a80a61-703f-4369-ab1e-900ee3efd9b9" name="Changes" comment="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować jako takie minimum" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +76,7 @@
       <workItem from="1734770376989" duration="2484000" />
       <workItem from="1734888822905" duration="738000" />
       <workItem from="1735043619486" duration="3060000" />
-      <workItem from="1735335366281" duration="1001000" />
+      <workItem from="1735335366281" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować ajko takie minimum">
       <option name="closed" value="true" />
@@ -86,7 +86,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735336347625</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować jako takie minimum">
+      <option name="closed" value="true" />
+      <created>1735336519861</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1735336519861</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +102,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować ajko takie minimum" />
-    <option name="LAST_COMMIT_MESSAGE" value="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować ajko takie minimum" />
+    <MESSAGE value="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować jako takie minimum" />
+    <option name="LAST_COMMIT_MESSAGE" value="nowy plan uml, jak masz jakieś pomysły to możesz modyfikować, ja myślę, że to co jest można traktować jako takie minimum" />
   </component>
 </project>

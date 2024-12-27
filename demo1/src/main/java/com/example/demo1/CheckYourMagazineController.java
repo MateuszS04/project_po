@@ -41,7 +41,7 @@ public class CheckYourMagazineController {
             return;
         }
 
-        String check="Insert into storage(date_of_beginning,days_in_storage,login,storage_size) values(?,?,?,?)";
+        String check="SELECT date_of_beginning, days_in_storage, storage_size FROM storage WHERE login = ?";
 
         try(PreparedStatement pstm=connection.prepareStatement(check)){
             pstm.setString(1,Login);
