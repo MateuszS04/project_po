@@ -5,7 +5,7 @@ actor SystemPracowniczy
 ' Bazy danych
 database "Baza Danych Kont" as BazaKont
 database "Baza Danych Magazynu" as BazaMagazyn
-database "Baza Danych Złożonych Zamówień" as BazaZamowienia
+
 
 ' Klient interakcje
 Klient --> (Logowanie)
@@ -17,12 +17,12 @@ Klient --> (Stwórz Konto)
 Klient --> (Przeglądaj Asortyment)
 (Przeglądaj Asortyment) --> BazaMagazyn : Odczyt danych produktów
 
-Klient --> (Złóż Zamówienie)
-(Złóż Zamówienie) --> BazaMagazyn : Sprawdzenie dostępności produktów
-(Złóż Zamówienie) --> BazaZamowienia : Zapis zamówienia
+Klient --> (Asortyment do przechowania)
+(Asortyment do przechowania) --> BazaMagazyn : Sprawdzenie dostępności miejsca do przechowywania
+(Asortyment do przechowania) --> "Baza Danych Magazynu" : Zapis zamówienia na przestrzeń do przechowywania
 
-Klient --> (Pokaż Sumę Zamówienia)
-(Pokaż Sumę Zamówienia) --> BazaZamowienia : Odczyt ceny zamówienia
+Klient --> (Pokaż Sumę twoich produktów w magazynie)
+(Pokaż Sumę twoich produktów w magazynie) --> "Baza Danych Magazynu" : Odczyt ceny zamówienia
 
 ' System Pracowniczy interakcje
 SystemPracowniczy --> (Logowanie)
@@ -36,13 +36,6 @@ SystemPracowniczy --> (Dodaj Asortyment)
 
 SystemPracowniczy --> (Usuń Asortyment)
 (Usuń Asortyment) --> BazaMagazyn : Usunięcie produktu
-
-SystemPracowniczy --> (Wydaj Zamówienie)
-(Wydaj Zamówienie) --> BazaZamowienia : Aktualizacja statusu zamówienia
-(Wydaj Zamówienie) --> BazaMagazyn : Aktualizacja ilości produktów
-
-SystemPracowniczy --> (Odrzuć Zamówienie)
-(Odrzuć Zamówienie) --> BazaZamowienia : Aktualizacja statusu zamówienia
 
 SystemPracowniczy --> (Zarządzaj Kontami Klientów)
 (Zarządzaj Kontami Klientów) --> BazaKont : Modyfikacja/usunięcie kont klientów
