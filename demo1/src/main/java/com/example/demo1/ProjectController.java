@@ -102,6 +102,17 @@ public class ProjectController {
     }
 
 
+    public void login_employee_buttonButtonOnAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("login_employee.fxml"));
+            Stage register_stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            register_stage.setScene(scene);
+            register_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 

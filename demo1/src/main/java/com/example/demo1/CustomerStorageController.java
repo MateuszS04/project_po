@@ -15,13 +15,13 @@ import data_base.DatabaseConnection;
 import javafx.event.ActionEvent;
 import data_base.DatabaseConnection;
 
-public class CustomerStorageController {
+    public class CustomerStorageController {
     @FXML
-private TextField Date_of_beginning;
+    private TextField Date_of_beginning;
     @FXML
-private TextField Days_in_storage;
+    private TextField Days_in_storage;
     @FXML
-private TextField Login;
+    private TextField Login;
     @FXML
     private Button Save;
     @FXML
@@ -57,7 +57,7 @@ private TextField Login;
 
         int max_storage=switch(storage_size){
             case "Small"->30;
-            case "medium"->20;
+            case "Medium"->20;
             case "Large"->10;
             default -> 0;
         };
