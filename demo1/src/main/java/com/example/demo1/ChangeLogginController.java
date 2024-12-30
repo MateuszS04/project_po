@@ -23,50 +23,50 @@ public class ChangeLogginController {
 
     public void ChangeButtonOnAction(ActionEvent actionEvent) {
         if (passwordField_1.getText().equals(passwordField_2.getText())) {
-            password_message.setText("password match");
-            if(SessionData.getAdmin()==true){
+            password_message.setText("Password match");
+            if(SessionData.getAdmin()) {
                 changeloggin_employee();
-            }else {
+            } else {
                 changeloggin();
             }
         } else {
-            password_message.setText("logins not match");
+            password_message.setText("Logins do not match");
         }
     }
 
     public void changeloggin() {
         DatabaseConnection connect = new DatabaseConnection();
         Connection con = connect.getConnection();
+        PreparedStatement checkStmt = null;
+        PreparedStatement updateStmt = null;
+        ResultSet resultSet = null;
 
         if (con == null) {
             login_message.setText("Failed to connect to database");
             return;
         }
-        if (passwordField_1.getText().isEmpty() || passwordField_2.getText().isEmpty()) {
+
+        String newLogin = passwordField_1.getText();
+
+        if (newLogin.isEmpty()) {
             login_message.setText("Please fill all fields");
             return;
         }
 
-
-
-        String newLogin = passwordField_1.getText();
-
         String checkLoginQuery = "SELECT COUNT(*) as total FROM login_data WHERE login=?";
-
         String updateQuery = "UPDATE login_data SET login=? WHERE login=?";
 
         try {
-
-            PreparedStatement checkStmt = con.prepareStatement(checkLoginQuery);
+            checkStmt = con.prepareStatement(checkLoginQuery);
             checkStmt.setString(1, newLogin);
-            ResultSet resultSet = checkStmt.executeQuery();
+            resultSet = checkStmt.executeQuery();
 
             if (resultSet.next() && resultSet.getInt("total") >= 1) {
                 login_message.setText("Login already exists. Try again.");
                 return;
             }
 
-            PreparedStatement updateStmt = con.prepareStatement(updateQuery);
+            updateStmt = con.prepareStatement(updateQuery);
             updateStmt.setString(1, newLogin);
             updateStmt.setString(2, SessionData.getCurrentLogin());
             int rowsAffected = updateStmt.executeUpdate();
@@ -82,39 +82,51 @@ public class ChangeLogginController {
         } catch (SQLException e) {
             e.printStackTrace();
             login_message.setText("Database error");
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (checkStmt != null) checkStmt.close();
+                if (updateStmt != null) updateStmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void changeloggin_employee() {
         DatabaseConnection connect = new DatabaseConnection();
         Connection con = connect.getConnection();
+        PreparedStatement checkStmt = null;
+        PreparedStatement updateStmt = null;
+        ResultSet resultSet = null;
 
         if (con == null) {
             login_message.setText("Failed to connect to database");
             return;
         }
 
-        if (passwordField_1.getText().isEmpty() || passwordField_2.getText().isEmpty()) {
+        String newLogin = passwordField_1.getText();
+
+        if (newLogin.isEmpty()) {
             login_message.setText("Please fill all fields");
             return;
         }
 
-        String newLogin = passwordField_1.getText();
         String checkLoginQuery = "SELECT COUNT(*) as total FROM login_data_employee WHERE login_employee=?";
         String updateQuery = "UPDATE login_data_employee SET login_employee=? WHERE login_employee=?";
 
         try {
-
-            PreparedStatement checkStmt = con.prepareStatement(checkLoginQuery);
+            checkStmt = con.prepareStatement(checkLoginQuery);
             checkStmt.setString(1, newLogin);
-            ResultSet resultSet = checkStmt.executeQuery();
+            resultSet = checkStmt.executeQuery();
 
             if (resultSet.next() && resultSet.getInt("total") >= 1) {
                 login_message.setText("Login already exists. Try again.");
                 return;
             }
 
-            PreparedStatement updateStmt = con.prepareStatement(updateQuery);
+            updateStmt = con.prepareStatement(updateQuery);
             updateStmt.setString(1, newLogin);
             updateStmt.setString(2, SessionData.getCurrentLogin());
             int rowsAffected = updateStmt.executeUpdate();
@@ -130,11 +142,15 @@ public class ChangeLogginController {
         } catch (SQLException e) {
             e.printStackTrace();
             login_message.setText("Database error");
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (checkStmt != null) checkStmt.close();
+                if (updateStmt != null) updateStmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-
-
 }
-
-
-

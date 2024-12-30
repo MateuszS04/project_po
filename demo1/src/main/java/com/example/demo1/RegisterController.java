@@ -45,63 +45,68 @@ public class RegisterController {
         }
 
     }
-    public void registerUser(){
+
+    public void registerUser() {
         DatabaseConnection connect = new DatabaseConnection();
         Connection con = connect.getConnection();
 
-        if(con==null){
+        if (con == null) {
             login_message.setText("Failed to connect to database");
             return;
         }
-        if(login_field.getText().isEmpty()||passwordField_1.getText().isEmpty()||passwordField_2.getText().isEmpty()){
+        if (login_field.getText().isEmpty() || passwordField_1.getText().isEmpty() || passwordField_2.getText().isEmpty()) {
             login_message.setText("Please fill all fields");
             return;
         }
 
+        String login_text = login_field.getText();
+        String password_text = passwordField_1.getText();
 
-        String login_text=login_field.getText();
-        String password_text=passwordField_1.getText();
+        String check_login = "select count(*) as total from login_data where login=?";
+        String insertQuery = "Insert into login_data(login,password) values(?,?)";
 
-        String check_login= "select count(*) as total from login_data where login=?";
-        String insertQuery= "Insert into login_data(login,password) values(?,?)";
+        PreparedStatement pst = null;
+        PreparedStatement prpst = null;
+        ResultSet log = null;
 
+        try {
+            pst = con.prepareStatement(check_login);
+            pst.setString(1, login_text);
+            log = pst.executeQuery();
 
+            if (log.next() && log.getInt(1) >= 1) {
+                login_message.setText("Login already exists, try again.");
+                return;
+            }
+
+            prpst = con.prepareStatement(insertQuery);
+            prpst.setString(1, login_text);
+            prpst.setString(2, password_text);
+
+            int rowsAffected = prpst.executeUpdate();
+            if (rowsAffected > 0) {
+                login_message.setText("Registration successful!");
+                Stage currentStage = (Stage) btn_Register.getScene().getWindow();
+                currentStage.close();
+            } else {
+                login_message.setText("Registration failed.");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            login_message.setText("Error occurred during registration.");
+        } finally {
             try {
-                PreparedStatement pst = con.prepareStatement(check_login);
-                pst.setString(1, login_field.getText());
-                ResultSet log=pst.executeQuery();
-                if(log.next()&& log.getInt(1)>=1){
-                    login_message.setText("login already exist try again");
-                    return;
-                }
-
-
+                if (log != null) log.close();
+                if (pst != null) pst.close();
+                if (prpst != null) prpst.close();
+                if (con != null) con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-            try {
-                PreparedStatement prpst = con.prepareStatement(insertQuery);
-                prpst.setString(1, login_text);
-                prpst.setString(2, password_text);
-
-
-                int rowsAffected = prpst.executeUpdate();
-                if (rowsAffected > 0) {
-                    login_message.setText("success");
-                    Stage currentstage=(Stage) btn_Register.getScene().getWindow();
-                    currentstage.close();
-                } else {
-                    login_message.setText("fail");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                login_message.setText("fail");
-            }
         }
-
-
-
     }
+}
+
 
 

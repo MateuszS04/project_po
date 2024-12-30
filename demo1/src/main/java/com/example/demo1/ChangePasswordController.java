@@ -21,21 +21,26 @@ public class ChangePasswordController {
     public PasswordField passwordField_2;
     public PasswordField passwordField_1;
     public Label signup_message;
+
     public void ChangeButtonOnAction(ActionEvent actionEvent) {
         if (passwordField_1.getText().equals(passwordField_2.getText())) {
-            password_message.setText("password match");
-            if(SessionData.getAdmin()==true){
+            password_message.setText("Password match");
+            if(SessionData.getAdmin()) {
                 changepassword_employee();
-            }else {
+            } else {
                 changepassword();
             }
         } else {
-            password_message.setText("logins not match");
+            password_message.setText("Passwords do not match");
         }
     }
+
     public void changepassword_employee() {
         DatabaseConnection connect = new DatabaseConnection();
         Connection con = connect.getConnection();
+        PreparedStatement checkStmt = null;
+        PreparedStatement updateStmt = null;
+        ResultSet resultSet = null;
 
         if (con == null) {
             signup_message.setText("Failed to connect to database");
@@ -60,17 +65,16 @@ public class ChangePasswordController {
         String updatePasswordQuery = "UPDATE login_data_employee SET password_employee=? WHERE login_employee=?";
 
         try {
-            PreparedStatement checkStmt = con.prepareStatement(checkLoginQuery);
+            checkStmt = con.prepareStatement(checkLoginQuery);
             checkStmt.setString(1, currentLogin);
-            ResultSet resultSet = checkStmt.executeQuery();
+            resultSet = checkStmt.executeQuery();
 
             if (resultSet.next() && resultSet.getInt("total") == 0) {
                 signup_message.setText("Login not found. Please check your login.");
                 return;
             }
 
-
-            PreparedStatement updateStmt = con.prepareStatement(updatePasswordQuery);
+            updateStmt = con.prepareStatement(updatePasswordQuery);
             updateStmt.setString(1, newPassword1);
             updateStmt.setString(2, SessionData.getCurrentLogin());
             int rowsAffected = updateStmt.executeUpdate();
@@ -83,11 +87,24 @@ public class ChangePasswordController {
         } catch (SQLException e) {
             e.printStackTrace();
             signup_message.setText("Database error");
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (checkStmt != null) checkStmt.close();
+                if (updateStmt != null) updateStmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
+
     public void changepassword() {
         DatabaseConnection connect = new DatabaseConnection();
         Connection con = connect.getConnection();
+        PreparedStatement checkStmt = null;
+        PreparedStatement updateStmt = null;
+        ResultSet resultSet = null;
 
         if (con == null) {
             signup_message.setText("Failed to connect to database");
@@ -112,17 +129,16 @@ public class ChangePasswordController {
         String updatePasswordQuery = "UPDATE login_data SET password=? WHERE login=?";
 
         try {
-            PreparedStatement checkStmt = con.prepareStatement(checkLoginQuery);
+            checkStmt = con.prepareStatement(checkLoginQuery);
             checkStmt.setString(1, currentLogin);
-            ResultSet resultSet = checkStmt.executeQuery();
+            resultSet = checkStmt.executeQuery();
 
             if (resultSet.next() && resultSet.getInt("total") == 0) {
                 signup_message.setText("Login not found. Please check your login.");
                 return;
             }
 
-
-            PreparedStatement updateStmt = con.prepareStatement(updatePasswordQuery);
+            updateStmt = con.prepareStatement(updatePasswordQuery);
             updateStmt.setString(1, newPassword1);
             updateStmt.setString(2, SessionData.getCurrentLogin());
             int rowsAffected = updateStmt.executeUpdate();
@@ -135,9 +151,15 @@ public class ChangePasswordController {
         } catch (SQLException e) {
             e.printStackTrace();
             signup_message.setText("Database error");
+        } finally {
+            try {
+                if (resultSet != null) resultSet.close();
+                if (checkStmt != null) checkStmt.close();
+                if (updateStmt != null) updateStmt.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-
 }
-
-
