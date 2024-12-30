@@ -15,4 +15,129 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ChangePasswordController {
+    public TextField login_field;
+    public Button Change;
+    public Label password_message;
+    public PasswordField passwordField_2;
+    public PasswordField passwordField_1;
+    public Label signup_message;
+    public void ChangeButtonOnAction(ActionEvent actionEvent) {
+        if (passwordField_1.getText().equals(passwordField_2.getText())) {
+            password_message.setText("password match");
+            if(SessionData.getAdmin()==true){
+                changepassword_employee();
+            }else {
+                changepassword();
+            }
+        } else {
+            password_message.setText("logins not match");
+        }
+    }
+    public void changepassword_employee() {
+        DatabaseConnection connect = new DatabaseConnection();
+        Connection con = connect.getConnection();
+
+        if (con == null) {
+            signup_message.setText("Failed to connect to database");
+            return;
+        }
+
+        String newPassword1 = passwordField_1.getText();
+        String newPassword2 = passwordField_2.getText();
+
+        if (newPassword1.isEmpty() || newPassword2.isEmpty()) {
+            signup_message.setText("Please fill all fields");
+            return;
+        }
+
+        if (!newPassword1.equals(newPassword2)) {
+            signup_message.setText("Passwords do not match");
+            return;
+        }
+
+        String currentLogin = SessionData.getCurrentLogin();
+        String checkLoginQuery = "SELECT COUNT(*) as total FROM login_data_employee WHERE login_employee=?";
+        String updatePasswordQuery = "UPDATE login_data_employee SET password_employee=? WHERE login_employee=?";
+
+        try {
+            PreparedStatement checkStmt = con.prepareStatement(checkLoginQuery);
+            checkStmt.setString(1, currentLogin);
+            ResultSet resultSet = checkStmt.executeQuery();
+
+            if (resultSet.next() && resultSet.getInt("total") == 0) {
+                signup_message.setText("Login not found. Please check your login.");
+                return;
+            }
+
+
+            PreparedStatement updateStmt = con.prepareStatement(updatePasswordQuery);
+            updateStmt.setString(1, newPassword1);
+            updateStmt.setString(2, SessionData.getCurrentLogin());
+            int rowsAffected = updateStmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                signup_message.setText("Password updated successfully");
+            } else {
+                signup_message.setText("Failed to update password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            signup_message.setText("Database error");
+        }
+    }
+    public void changepassword() {
+        DatabaseConnection connect = new DatabaseConnection();
+        Connection con = connect.getConnection();
+
+        if (con == null) {
+            signup_message.setText("Failed to connect to database");
+            return;
+        }
+
+        String newPassword1 = passwordField_1.getText();
+        String newPassword2 = passwordField_2.getText();
+
+        if (newPassword1.isEmpty() || newPassword2.isEmpty()) {
+            signup_message.setText("Please fill all fields");
+            return;
+        }
+
+        if (!newPassword1.equals(newPassword2)) {
+            signup_message.setText("Passwords do not match");
+            return;
+        }
+
+        String currentLogin = SessionData.getCurrentLogin();
+        String checkLoginQuery = "SELECT COUNT(*) as total FROM login_data WHERE login=?";
+        String updatePasswordQuery = "UPDATE login_data SET password=? WHERE login=?";
+
+        try {
+            PreparedStatement checkStmt = con.prepareStatement(checkLoginQuery);
+            checkStmt.setString(1, currentLogin);
+            ResultSet resultSet = checkStmt.executeQuery();
+
+            if (resultSet.next() && resultSet.getInt("total") == 0) {
+                signup_message.setText("Login not found. Please check your login.");
+                return;
+            }
+
+
+            PreparedStatement updateStmt = con.prepareStatement(updatePasswordQuery);
+            updateStmt.setString(1, newPassword1);
+            updateStmt.setString(2, SessionData.getCurrentLogin());
+            int rowsAffected = updateStmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                signup_message.setText("Password updated successfully");
+            } else {
+                signup_message.setText("Failed to update password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            signup_message.setText("Database error");
+        }
+    }
+
 }
+
+

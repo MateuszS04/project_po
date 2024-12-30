@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.WarehousController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.WarehousController">
     <top>
         <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER">
             <children>
@@ -14,9 +14,11 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="place_an_order" layoutX="49.0" layoutY="122.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="place an order" />
-            <Button fx:id="check_the_supply" layoutX="194.0" layoutY="122.0" mnemonicParsing="false" onAction="#check_the_supplyButtonOnAction" text="check the supply of the warehouse" />
-            <Button fx:id="check_your_orders" layoutX="434.0" layoutY="122.0" mnemonicParsing="false" onAction="#check_your_ordersButtonOnAction" text="check your orders" />
+            <Button fx:id="place_an_order" layoutX="46.0" layoutY="68.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="Place an order" />
+            <Button fx:id="check_the_supply" layoutX="247.0" layoutY="68.0" mnemonicParsing="false" onAction="#check_free_spaceButtonOnAction" text="Check free space" />
+             <Button fx:id="change_login" layoutX="456.0" layoutY="162.0" mnemonicParsing="false" onAction="#change_loginButtonOnAction" text="Change login" />
+             <Button fx:id="chage_password" layoutX="41.0" layoutY="162.0" mnemonicParsing="false" onAction="#chage_passwordButtonOnAction" text="Chage password" />
+             <Button fx:id="check_your_orders" layoutX="443.0" layoutY="68.0" mnemonicParsing="false" onAction="#check_your_ordersButtonOnAction" text="Check your orders" />
          </children>
       </AnchorPane>
    </center>

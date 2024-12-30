@@ -1,5 +1,4 @@
 package com.example.demo1;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,13 +25,12 @@ public class ProjectController {
     private Label login_message;
     @FXML
     private Button signup_button;
-
     //    public void initialize(){
 //
 //    }
     @FXML
     public void login_buttonButtonOnAction(ActionEvent event) {
-        if (login_field.getText().isBlank() == false && password_field.getText().isBlank() == false) {
+        if (!login_field.getText().isBlank() && !password_field.getText().isBlank()) {
             validateLogin();
         } else {
             login_message.setText("Please fill out all fields");
@@ -57,8 +55,11 @@ public class ProjectController {
             ResultSet rs = st.executeQuery();
             if (rs.next() && rs.getInt("total") == 1) {
                 login_message.setText("Login successful");
+                SessionData.setCurrentLogin(login_field.getText());
+                login_field.clear();
+                password_field.clear();
+                SessionData.setAdmin(false);
                 Stage currentstage = (Stage) login_button.getScene().getWindow();
-                currentstage.close();
                 warehouse();
 
             } else {

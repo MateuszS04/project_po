@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CheckMagazine_employeeController">
+    <top>
+        <AnchorPane prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="234.0" layoutY="14.0" text="Check place in magazine" />
+            <Label layoutX="85.0" layoutY="55.0" text="Enter customer login" />
+            <TextField fx:id="login" layoutX="225.0" layoutY="51.0" />
+                <Button fx:id="delete" layoutX="480.0" layoutY="51.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" text="Delete Selected" />
+            <Button fx:id="check" layoutX="404.0" layoutY="51.0" mnemonicParsing="false" onAction="#checkButtonOnAction" text="check" />
+            <Label fx:id="magazine_message" layoutX="196.0" layoutY="88.0" prefHeight="17.0" prefWidth="284.0" />
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <ListView fx:id="Magazine_list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    </center>
+</BorderPane>

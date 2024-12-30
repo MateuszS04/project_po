@@ -1,24 +1,23 @@
 package com.example.demo1;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.*;
-
+import data_base.DatabaseConnection;
 import javafx.event.ActionEvent;
-import java.net.URL;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import data_base.DatabaseConnection;
-import com.example.demo1.ProjectController;
-import javafx.stage.Stage;
-
-
-import javax.xml.transform.Result;
-public class CheckYourMagazineController {
+public class CheckMagazine_employeeController {
     @FXML
     private Button delete;
+    @FXML
+    public TextField login;
     @FXML
     private Button check;
     @FXML
@@ -34,7 +33,7 @@ public class CheckYourMagazineController {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
 
-        String Login = SessionData.getCurrentLogin();
+        String Login = login.getText() ;
         if (Login.isEmpty()) {
             magazine_message.setText("Please enter your login");
             return;
@@ -104,6 +103,7 @@ public class CheckYourMagazineController {
                     magazine_message.setText("Item deleted successfully");
                     updateFreeSpace(connection, storageSize);
                     Magazine_list.getItems().remove(selectedItem);
+
                 } else {
                     magazine_message.setText("Failed to delete the item. Please try again.");
                 }
@@ -116,8 +116,7 @@ public class CheckYourMagazineController {
         }
     }
     private void updateFreeSpace(Connection connection, String size) {
-        String updateFreeSpaceQuery = "UPDATE magasine_free SET " + size.toLowerCase() + " = " + size.toLowerCase() + " +1";
-
+        String updateFreeSpaceQuery = "UPDATE magasine_free SET " + size.toLowerCase() + " = " + size.toLowerCase() + " + 1";
 
         try (PreparedStatement updateStmt = connection.prepareStatement(updateFreeSpaceQuery)) {
             int rowsAffected = updateStmt.executeUpdate();
@@ -131,3 +130,4 @@ public class CheckYourMagazineController {
     }
 
 }
+

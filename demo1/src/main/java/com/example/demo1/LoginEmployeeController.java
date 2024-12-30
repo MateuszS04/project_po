@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
+import kotlin.text.UStringsKt;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,6 +36,8 @@ public class LoginEmployeeController {
             st.setString(2, password_employee_field.getText());
             ResultSet rs = st.executeQuery();
             if (rs.next() && rs.getInt("total") == 1) {
+                SessionData.setCurrentLogin(login_employee_field.getText());
+                SessionData.setAdmin(true);
                 login_message.setText("Login successful");
                 Stage currentstage = (Stage) login_employee_button.getScene().getWindow();
                 currentstage.close();

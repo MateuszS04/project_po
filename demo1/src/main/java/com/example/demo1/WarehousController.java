@@ -15,6 +15,10 @@ import javafx.event.ActionEvent;
 
 public class WarehousController {
     @FXML
+    public Button chage_password;
+    @FXML
+    public Button change_login;
+    @FXML
     private Button place_an_order;
     @FXML
     private Button check_the_supply;
@@ -24,17 +28,23 @@ public class WarehousController {
     public void place_an_orderButtonOnAction(ActionEvent event) {
         place_the_order();
         Stage stage = (Stage) place_an_order.getScene().getWindow();
-        stage.close();
+
     }
-    public void check_the_supplyButtonOnAction(ActionEvent event) {
-        Check_the_supply();
-        Stage stage = (Stage) check_the_supply.getScene().getWindow();
-        stage.close();
+    public void check_free_spaceButtonOnAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("check_free_space.fxml"));
+            Stage register_stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            register_stage.setScene(scene);
+            register_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void check_your_ordersButtonOnAction(ActionEvent event) {
         Check_your_orders();
         Stage stage = (Stage) check_your_orders.getScene().getWindow();
-        stage.close();
+
 
     }
     public void place_the_order(){
@@ -62,6 +72,31 @@ public class WarehousController {
     public void Check_your_orders(){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("check_your_orders.fxml"));
+            Stage check_your_orders_stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            check_your_orders_stage.setScene(scene);
+            check_your_orders_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void change_loginButtonOnAction(ActionEvent actionEvent) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("changelogin.fxml"));
+            Stage check_your_orders_stage = new Stage();
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            check_your_orders_stage.setScene(scene);
+            check_your_orders_stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void chage_passwordButtonOnAction(ActionEvent actionEvent) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("changepassword.fxml"));
             Stage check_your_orders_stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             check_your_orders_stage.setScene(scene);

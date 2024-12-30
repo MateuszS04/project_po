@@ -14,12 +14,12 @@
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="place_an_order" layoutX="48.0" layoutY="73.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="place an order" />
-                <Button fx:id="check_the_supply" layoutX="200.0" layoutY="73.0" mnemonicParsing="false" onAction="#check_the_supplyButtonOnAction" text="check the supply of the warehouse" />
-                <Button fx:id="check_orders" layoutX="444.0" layoutY="73.0" mnemonicParsing="false" onAction="#check_ordersButtonOnAction" text="check orders" />
-                <Button fx:id="change_login" layoutX="258.0" layoutY="162.0" mnemonicParsing="false" onAction="#change_loginButtonOnAction" text="change login" />
-                <Button fx:id="check_clients_accounts" layoutX="27.0" layoutY="162.0" mnemonicParsing="false" onAction="#check_clients_accountsButtonOnAction" text="check clients accounts" />
-                <Button fx:id="chage_password" layoutX="435.0" layoutY="162.0" mnemonicParsing="false" onAction="#chage_passwordButtonOnAction" text="chage password" />
+                <Button fx:id="place_an_order" layoutX="48.0" layoutY="73.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="Place an order" />
+                <Button fx:id="check_free_space" layoutX="247.0" layoutY="73.0" mnemonicParsing="false" onAction="#check_free_spaceButtonOnAction" text="Check free space" />
+                <Button fx:id="check_orders" layoutX="444.0" layoutY="73.0" mnemonicParsing="false" onAction="#check_ordersButtonOnAction" text="Check orders" />
+                <Button fx:id="change_login" layoutX="258.0" layoutY="162.0" mnemonicParsing="false" onAction="#change_loginButtonOnAction" text="Change login" />
+                <Button fx:id="check_clients_accounts" layoutX="27.0" layoutY="162.0" mnemonicParsing="false" onAction="#check_clients_accountsButtonOnAction" text="Check clients accounts" />
+                <Button fx:id="chage_password" layoutX="435.0" layoutY="162.0" mnemonicParsing="false" onAction="#chage_passwordButtonOnAction" text="Chage password" />
             </children>
         </AnchorPane>
     </center>
