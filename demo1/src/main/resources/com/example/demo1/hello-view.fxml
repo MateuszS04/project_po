@@ -2,28 +2,41 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ProjectController">
     <top>
         <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="270.0" layoutY="37.0" text="Registration" />
+                <Label layoutX="230.0" layoutY="25.0" text="Main menu">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
             </children>
         </AnchorPane>
     </top>
     <center>
         <AnchorPane prefHeight="179.0" prefWidth="377.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="286.0" layoutY="61.0" text="Login" />
-                <Label layoutX="274.0" layoutY="137.0" prefHeight="18.0" prefWidth="51.0" text="Password" />
-                <TextField fx:id="login_field" layoutX="225.0" layoutY="88.0" />
-                <Button fx:id="login_button" layoutX="277.0" layoutY="245.0" mnemonicParsing="false" onAction="#login_buttonButtonOnAction" text="Login" />
-                <PasswordField fx:id="password_field" layoutX="225.0" layoutY="203.0" />
-                <Label fx:id="login_message" layoutX="187.0" layoutY="169.0" prefHeight="17.0" prefWidth="218.0" />
-            <Button fx:id="signup_button" layoutX="454.0" layoutY="245.0" mnemonicParsing="false" onAction="#signup_buttonButtonOnAction" text="Sign up" />
-            <Label layoutX="398.0" layoutY="207.0" prefHeight="17.0" prefWidth="167.0" text="If you don't have an account" />
-            <Button layoutX="52.0" layoutY="245.0" mnemonicParsing="false" onAction="#login_employee_buttonButtonOnAction" text="Login" />
-            <Label layoutX="25.0" layoutY="207.0" text="Login as employee" />
+                <Label layoutX="285.0" layoutY="46.0" text="Login" />
+                <Label layoutX="274.0" layoutY="122.0" prefHeight="18.0" prefWidth="51.0" text="Password" />
+                <TextField fx:id="login_field" layoutX="225.0" layoutY="72.0" />
+                <Button fx:id="login_button" layoutX="258.0" layoutY="207.0" mnemonicParsing="false" onAction="#login_buttonButtonOnAction" text="Log in">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <PasswordField fx:id="password_field" layoutX="221.0" layoutY="142.0" />
+                <Label fx:id="login_message" layoutX="194.0" layoutY="180.0" prefHeight="18.0" prefWidth="200.0" />
+            <Button fx:id="signup_button" layoutX="439.0" layoutY="207.0" mnemonicParsing="false" onAction="#signup_buttonButtonOnAction" text="Sign up">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Label layoutX="398.0" layoutY="171.0" prefHeight="17.0" prefWidth="167.0" text="If you don't have an account" />
+            <Button layoutX="48.0" layoutY="207.0" mnemonicParsing="false" onAction="#login_employee_buttonButtonOnAction" text="Log in">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Label layoutX="35.0" layoutY="171.0" text="Login as employee" />
             </children>
         </AnchorPane>
     </center>

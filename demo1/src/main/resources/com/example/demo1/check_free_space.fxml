@@ -2,14 +2,21 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CheckFreeSpaceController">
     <top>
         <AnchorPane prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="255.0" layoutY="14.0" text="Check free space" />
-            <Button fx:id="check" layoutX="277.0" layoutY="51.0" mnemonicParsing="false" onAction="#checkButtonOnAction" text="check" />
-            <Label fx:id="magazine_message" layoutX="196.0" layoutY="88.0" prefHeight="17.0" prefWidth="284.0" />
+                <Label layoutX="208.0" layoutY="14.0" text="Check free space">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
+            <Button fx:id="check" layoutX="277.0" layoutY="55.0" mnemonicParsing="false" onAction="#checkButtonOnAction" text="check">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Label fx:id="magazine_message" layoutX="88.0" layoutY="101.0" prefHeight="18.0" prefWidth="426.0" />
             </children>
         </AnchorPane>
     </top>
