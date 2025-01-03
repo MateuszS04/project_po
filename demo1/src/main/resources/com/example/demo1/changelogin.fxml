@@ -6,7 +6,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ChangeLogginController">
     <top>
-        <AnchorPane prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
             <children>
                 <Label layoutX="222.0" layoutY="19.0" prefHeight="40.0" prefWidth="176.0" text="Change Login">
                <font>
@@ -16,7 +16,7 @@
         </AnchorPane>
     </top>
    <bottom>
-        <AnchorPane prefHeight="322.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="322.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
             <children>
                 <Label layoutX="133.0" layoutY="34.0" text="New login" />
             <Button fx:id="Change" layoutX="255.0" layoutY="157.0" mnemonicParsing="false" onAction="#ChangeButtonOnAction" text="Change">

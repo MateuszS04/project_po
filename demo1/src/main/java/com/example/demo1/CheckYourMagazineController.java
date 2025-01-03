@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javax.xml.transform.Result;
 public class CheckYourMagazineController {
     @FXML
-    private Button delete;
+    private Button deleate;
     @FXML
     private Button check;
     @FXML

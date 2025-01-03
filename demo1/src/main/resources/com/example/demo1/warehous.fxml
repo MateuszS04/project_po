@@ -4,9 +4,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.WarehousController">
+<?import javafx.scene.image.ImageView?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.WarehousController">
     <top>
-        <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
             <children>
                 <Label layoutX="230.0" layoutY="25.0" text="Warehouse">
                <font>
@@ -18,23 +19,24 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="place_an_order" layoutX="41.0" layoutY="68.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="Place an order">
+             <ImageView fx:id="warehouseImageView" fitWidth="600.0" fitHeight="400.0" preserveRatio="true"/>
+            <Button fx:id="place_an_order" layoutX="41.0" layoutY="68.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="Place an order" style="-fx-background-color: lightblue" >
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button fx:id="check_the_supply" layoutX="227.0" layoutY="68.0" mnemonicParsing="false" onAction="#check_free_spaceButtonOnAction" text="Check free space">
+            <Button fx:id="check_the_supply" layoutX="227.0" layoutY="68.0" mnemonicParsing="false" onAction="#check_free_spaceButtonOnAction" text="Check free space" style="-fx-background-color: lightblue">
                <font>
                   <Font size="18.0" />
                </font></Button>
-             <Button fx:id="change_login" layoutX="436.0" layoutY="162.0" mnemonicParsing="false" onAction="#change_loginButtonOnAction" text="Change login">
+             <Button fx:id="change_login" layoutX="436.0" layoutY="162.0" mnemonicParsing="false" onAction="#change_loginButtonOnAction" text="Change login" style="-fx-background-color: lightblue" >
                <font>
                   <Font size="18.0" />
                </font></Button>
-             <Button fx:id="chage_password" layoutX="32.0" layoutY="162.0" mnemonicParsing="false" onAction="#chage_passwordButtonOnAction" text="Chage password">
+             <Button fx:id="chage_password" layoutX="32.0" layoutY="162.0" mnemonicParsing="false" onAction="#chage_passwordButtonOnAction" text="Chage password" style="-fx-background-color: lightblue">
                <font>
                   <Font size="18.0" />
                </font></Button>
-             <Button fx:id="check_your_orders" layoutX="417.0" layoutY="68.0" mnemonicParsing="false" onAction="#check_your_ordersButtonOnAction" text="Check your orders">
+             <Button fx:id="check_your_orders" layoutX="417.0" layoutY="68.0" mnemonicParsing="false" onAction="#check_your_ordersButtonOnAction" text="Check your orders" style="-fx-background-color: lightblue">
                <font>
                   <Font size="18.0" />
                </font></Button>

@@ -6,7 +6,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.LoginEmployeeController">
     <top>
-        <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
             <children>
                 <Label layoutX="204.0" layoutY="25.0" text="Employee login">
                <font>
@@ -16,7 +16,7 @@
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane prefHeight="179.0" prefWidth="377.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="179.0" prefWidth="377.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
             <children>
                 <Label layoutX="285.0" layoutY="48.0" text="Login" />
                 <Label layoutX="274.0" layoutY="111.0" prefHeight="18.0" prefWidth="51.0" text="Password" />

@@ -7,8 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +24,12 @@ public class ChangePasswordController {
     public PasswordField passwordField_2;
     public PasswordField passwordField_1;
     public Label signup_message;
+    @FXML
+    private ImageView warehouseiconImageView;
+
+    public void initialize() {
+        load_image();
+    }
 
     public void ChangeButtonOnAction(ActionEvent actionEvent) {
         if (passwordField_1.getText().equals(passwordField_2.getText())) {
@@ -160,6 +169,21 @@ public class ChangePasswordController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void load_image(){
+        try{
+            URL resources=getClass().getResource("/images/warehouse_icon.png");
+            if(resources!=null){
+                Image image = new Image(resources.toExternalForm());
+                warehouseiconImageView.setImage(image);
+            }else{
+                System.out.println("resources not found");
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

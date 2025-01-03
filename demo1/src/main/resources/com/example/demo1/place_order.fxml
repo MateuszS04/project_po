@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CustomerStorageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CustomerStorageController">
     <top>
-        <AnchorPane prefHeight="103.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="103.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: black">
             <children>
-                <Label layoutX="138.0" layoutY="32.0" text="Add your items to storage">
+                <Label layoutX="138.0" layoutY="32.0" text="Add your items to storage" style="-fx-text-fill: yellow">
                <font>
                   <Font size="28.0" />
                </font></Label>
@@ -16,18 +17,19 @@
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" style="-fx-background-color: yellow">
             <children>
+                <ImageView fx:id="CustomerStorageImageView" fitHeight="131.0" fitWidth="167.0" layoutX="119.0" layoutY="170.0" preserveRatio="true" />
                 <Label layoutX="116.0" layoutY="52.0" text="Storage start date (dd-mm-yyyy)" />
                 <Label layoutX="157.0" layoutY="186.0" prefHeight="23.0" prefWidth="285.0" />
                 <Label layoutX="359.0" layoutY="52.0" text="Number of days for storage" />
                 <TextField fx:id="Date_of_beginning" layoutX="116.0" layoutY="102.0" />
                 <TextField fx:id="Days_in_storage" layoutX="357.0" layoutY="102.0" />
-            <Button layoutX="270.0" layoutY="243.0" mnemonicParsing="false" onAction="#SaveOnActionButton" text="Save">
+            <Button layoutX="412.0" layoutY="236.0" mnemonicParsing="false" onAction="#SaveOnActionButton" text="Save">
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Label fx:id="message" layoutX="187.0" layoutY="218.0" prefHeight="17.0" prefWidth="226.0" />
+            <Label fx:id="message" layoutX="330.0" layoutY="189.0" prefHeight="17.0" prefWidth="226.0" />
             <Label layoutX="116.0" layoutY="149.0" text="Select the size of the warehouse space" />
             <ChoiceBox fx:id="Storage_size" layoutX="357.0" layoutY="145.0" prefWidth="150.0" />
             </children>

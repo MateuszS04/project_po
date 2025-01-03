@@ -14,6 +14,8 @@ import java.sql.SQLException;
 
 import data_base.DatabaseConnection;
 import com.example.demo1.ProjectController;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
@@ -34,6 +36,12 @@ public class RegisterController {
     private TextField login_field;
     @FXML
     private Label login_message;
+    @FXML
+    private ImageView warehouseicon;
+
+    public void initialize() {
+        load_image();
+    }
 
     @FXML
     public void btn_RegisterButtonOnAction(ActionEvent actionEvent) {
@@ -104,6 +112,20 @@ public class RegisterController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+    public void load_image(){
+        try{
+            URL resources=getClass().getResource("/images/warehouse_icon.png");
+            if(resources!=null){
+                Image image = new Image(resources.toExternalForm());
+                warehouseicon.setImage(image);
+            }else{
+                System.out.println("resources not found");
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

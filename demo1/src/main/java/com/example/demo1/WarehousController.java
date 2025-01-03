@@ -3,13 +3,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.sql.*;
-
-import data_base.DatabaseConnection;
+import java.net.URL;
 
 import javafx.event.ActionEvent;
 
@@ -24,6 +22,12 @@ public class WarehousController {
     private Button check_the_supply;
     @FXML
     private Button check_your_orders;
+    @FXML
+    private ImageView warehouseImageView;
+
+    public void initialize() {
+        load_image();
+    }
 
     public void place_an_orderButtonOnAction(ActionEvent event) {
         place_the_order();
@@ -58,17 +62,7 @@ public class WarehousController {
             e.printStackTrace();
         }
     }
-    public void  Check_the_supply(){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("check_the_supply.fxml"));
-            Stage check_the_supply_stage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            check_the_supply_stage.setScene(scene);
-            check_the_supply_stage.show();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-    }
+
     public void Check_your_orders(){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("check_your_orders.fxml"));
@@ -102,6 +96,21 @@ public class WarehousController {
             check_your_orders_stage.setScene(scene);
             check_your_orders_stage.show();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void load_image(){
+        try{
+            URL resources=getClass().getResource("/images/warehouse.jpg");
+            if(resources!=null){
+                Image image = new Image(resources.toExternalForm());
+                warehouseImageView.setImage(image);
+            }else{
+                System.out.println("resources not found");
+            }
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

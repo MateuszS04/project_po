@@ -6,7 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.net.URL;
 import java.sql.*;
 
 import data_base.DatabaseConnection;
@@ -25,11 +29,14 @@ import data_base.DatabaseConnection;
     private Label message;
     @FXML
     private ChoiceBox<String> Storage_size;
+    @FXML
+    private ImageView CustomerStorageImageView;
     private final String[] storage_size = {"Small", "Medium", "Large"};
 
     public void initialize() {
         Storage_size.getItems().addAll(storage_size);
-        Storage_size.setValue("Small");                         //default size
+        Storage_size.setValue("Small");//default size
+        load_image();
     }
 
     public void SaveOnActionButton(ActionEvent event) {
@@ -101,4 +108,19 @@ import data_base.DatabaseConnection;
                 message.setText("An error occurred while inserting data.");
             }
         }
+        public void load_image(){
+            try{
+                URL resources=getClass().getResource("/images/place_order.png");
+                if(resources!=null){
+                    Image image = new Image(resources.toExternalForm());
+                    CustomerStorageImageView.setImage(image);
+                }else{
+                    System.out.println("resources not found");
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
 }

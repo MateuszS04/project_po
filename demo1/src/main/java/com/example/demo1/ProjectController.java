@@ -5,8 +5,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.sql.*;
 
 import data_base.DatabaseConnection;
@@ -25,9 +28,14 @@ public class ProjectController {
     private Label login_message;
     @FXML
     private Button signup_button;
-    //    public void initialize(){
-//
-//    }
+    @FXML
+    private ImageView logoImageView1;
+    @FXML
+    private ImageView logoImageView2;
+
+    public void initialize(){
+        load_image();
+    }
     @FXML
     public void login_buttonButtonOnAction(ActionEvent event) {
         if (!login_field.getText().isBlank() && !password_field.getText().isBlank()) {
@@ -111,6 +119,21 @@ public class ProjectController {
             register_stage.setScene(scene);
             register_stage.show();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void load_image(){
+        try{
+            URL resources=getClass().getResource("/images/warehouse_icon.png");
+            if(resources!=null){
+                Image image = new Image(resources.toExternalForm());
+                logoImageView1.setImage(image);
+                logoImageView2.setImage(image);
+            }else{
+                System.out.println("resources not found");
+            }
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

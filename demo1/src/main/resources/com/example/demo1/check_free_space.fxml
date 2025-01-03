@@ -6,9 +6,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CheckFreeSpaceController">
     <top>
-        <AnchorPane prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: black">
             <children>
-                <Label layoutX="208.0" layoutY="14.0" text="Check free space">
+                <Label layoutX="208.0" layoutY="14.0" text="Check free space" style="-fx-text-fill: yellow">
                <font>
                   <Font size="28.0" />
                </font></Label>
@@ -16,11 +16,11 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Label fx:id="magazine_message" layoutX="88.0" layoutY="101.0" prefHeight="18.0" prefWidth="426.0" />
+            <Label fx:id="magazine_message" layoutX="88.0" layoutY="101.0" prefHeight="18.0" prefWidth="426.0" style="-fx-text-fill: yellow"/>
             </children>
         </AnchorPane>
     </top>
     <center>
-        <ListView fx:id="Magazine_list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+        <ListView fx:id="Magazine_list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" style="-fx-background-color: yellow"  />
     </center>
 </BorderPane>
