@@ -1,0 +1,37 @@
+@startuml
+actor Klient
+actor Pracownik
+
+participant "Baza Danych Logowania" as BazaLogowania
+participant "Baza Danych Magazynu" as BazaMagazyn
+participant "Baza Danych Zamówień" as BazaZamowienia
+
+== Interakcje Klienta ==
+Klient -> BazaLogowania : Logowanie
+BazaLogowania --> Klient : Wynik logowania
+
+Klient -> BazaLogowania : Rejestracja Konta
+BazaLogowania --> Klient : Potwierdzenie Rejestracji
+
+Klient -> BazaMagazyn : Sprawdź Wolne Miejsca
+Klient -> BazaZamowienia : Złóż Zamówienie
+BazaZamowienia -> BazaMagazyn : Aktualizacja Stanu Magazynu
+Klient -> BazaZamowienia : Sprawdź Swoje Zamówienia
+
+Klient -> BazaLogowania : Zmień Hasło
+Klient -> BazaLogowania : Zmień Login
+
+== Interakcje Pracownika ==
+Pracownik -> BazaLogowania : Logowanie
+BazaLogowania --> Pracownik : Wynik logowania
+
+Pracownik -> BazaMagazyn : Sprawdź Wolne Miejsca
+Pracownik -> BazaZamowienia : Złóż Zamówienie
+Pracownik -> BazaZamowienia : Przeglądaj Zamówienia
+
+Pracownik -> BazaLogowania : Zmień Hasło
+Pracownik -> BazaLogowania : Zmień Login
+
+Pracownik -> BazaLogowania : Zarządzaj Kontami Klientów
+
+@enduml

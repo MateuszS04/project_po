@@ -33,43 +33,50 @@ public class CheckMagazine_employeeController {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connection = databaseConnection.getConnection();
 
-        String Login = login.getText() ;
+        String Login = login.getText();
+        String check;
+
         if (Login.isEmpty()) {
-            magazine_message.setText("Please enter your login");
-            return;
+            check = "SELECT id, login, date_of_beginning, days_in_storage, storage_size FROM storage";
+        } else {
+            check = "SELECT id, login, date_of_beginning, days_in_storage, storage_size FROM storage WHERE login = ?";
         }
 
-        String check = "SELECT id, date_of_beginning, days_in_storage, storage_size FROM storage WHERE login = ?";
-
         try (PreparedStatement pstm = connection.prepareStatement(check)) {
-            pstm.setString(1, Login);
-            ResultSet rs = pstm.executeQuery();
+            if (!Login.isEmpty()) {
+                pstm.setString(1, Login);
+            }
 
+            ResultSet rs = pstm.executeQuery();
             Magazine_list.getItems().clear();
             boolean hasData = false;
 
             while (rs.next()) {
                 hasData = true;
                 int id = rs.getInt("id");
+                String userLogin = rs.getString("login");
                 String dateOfBeginning = rs.getString("date_of_beginning");
                 String daysInStorage = rs.getString("days_in_storage");
                 String storageSize = rs.getString("storage_size");
 
-                String item = "ID: " + id + " - Date: " + dateOfBeginning + " Days: " + daysInStorage + " Size: " + storageSize;
+                String item = "ID: " + id + " - Login: " + userLogin + " - Date: " + dateOfBeginning +
+                        " - Days: " + daysInStorage + " - Size: " + storageSize;
                 Magazine_list.getItems().add(item);
             }
 
             if (!hasData) {
-                magazine_message.setText("No records for this login");
+                magazine_message.setText(Login.isEmpty() ? "No records found in storage" : "No records for this login");
             } else {
-                magazine_message.setText("Your magazine has been checked for " + Login + " and displayed below");
+                magazine_message.setText(Login.isEmpty() ? "All records displayed below" : "Magazine checked for " + Login + " and displayed below");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            magazine_message.setText("Something went wrong with checking your login");
+            magazine_message.setText("Something went wrong while fetching data.");
         }
     }
+
+
 
     public void deleteButtonOnAction(ActionEvent event) {
         deleteSelectedMagazine();
@@ -82,7 +89,7 @@ public class CheckMagazine_employeeController {
         if (selectedItem == null) {
             magazine_message.setText("Please select an item to delete");
             return;
-        }
+        }else{
 
         try {
             String[] parts = selectedItem.split(" ");
@@ -113,6 +120,7 @@ public class CheckMagazine_employeeController {
             }
         } catch (Exception e) {
             magazine_message.setText("Invalid item format or unexpected error.");
+        }
         }
     }
     private void updateFreeSpace(Connection connection, String size) {

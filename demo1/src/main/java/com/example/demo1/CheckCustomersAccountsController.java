@@ -93,6 +93,7 @@ public class CheckCustomersAccountsController {
                     magazine_message.setText("Customer deleted successfully.");
 
                     Magazine_list.getItems().remove(selectedItem);
+                    deleteMagazine(login);
                 } else {
                     magazine_message.setText("Failed to delete the customer. Please try again.");
                 }
@@ -104,4 +105,70 @@ public class CheckCustomersAccountsController {
             magazine_message.setText("Invalid item format or unexpected error.");
         }
     }
+    public void deleteMagazine(String login) {
+
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+
+        String countQuery = "SELECT storage_size, COUNT(*) AS count FROM storage WHERE login = ? GROUP BY storage_size";
+        String deleteQuery = "DELETE FROM storage WHERE login = ?";
+
+        int smallCount = 0;
+        int mediumCount = 0;
+        int largeCount = 0;
+
+        try (PreparedStatement countStmt = connection.prepareStatement(countQuery);
+             PreparedStatement deleteStmt = connection.prepareStatement(deleteQuery)) {
+
+            countStmt.setString(1, login);
+            ResultSet rs = countStmt.executeQuery();
+            while (rs.next()) {
+                String size = rs.getString("storage_size").toLowerCase();
+                int count = rs.getInt("count");
+
+                switch (size) {
+                    case "small":
+                        smallCount = count;
+                        break;
+                    case "medium":
+                        mediumCount = count;
+                        break;
+                    case "large":
+                        largeCount = count;
+                        break;
+                }
+            }
+
+            deleteStmt.setString(1, login);
+            int rowsAffected = deleteStmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                Magazine_list.getItems().clear();
+                updateFreeSpace(connection, smallCount, mediumCount, largeCount);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            magazine_message.setText("An error occurred while deleting magazines.");
+        }
+    }
+    private void updateFreeSpace(Connection connection, int smallCount, int mediumCount, int largeCount) {
+        String updateFreeSpaceQuery = "UPDATE magasine_free SET small = small + ?, medium = medium + ?, large = large + ?";
+
+        try (PreparedStatement updateStmt = connection.prepareStatement(updateFreeSpaceQuery)) {
+
+            updateStmt.setInt(1, smallCount);
+            updateStmt.setInt(2, mediumCount);
+            updateStmt.setInt(3, largeCount);
+
+            int rowsAffected = updateStmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Free space updated successfully.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            magazine_message.setText("An error occurred while updating free space.");
+        }
+    }
+
 }

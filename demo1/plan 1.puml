@@ -1,0 +1,33 @@
+@startuml
+title System User Flow
+
+actor Klient
+actor SystemPracowniczy
+
+Klient --> (Wybór użytkownika: klient/system)
+SystemPracowniczy --> (Wybór użytkownika: klient/system)
+
+(Wybór użytkownika: klient/system) --> (Logowanie - klient) : klient
+(Wybór użytkownika: klient/system) --> (Logowanie - system) : system
+
+(Logowanie - klient) --> (Stwórz konto)
+(Logowanie - klient) --> (GUI użytkownika) : Zalogowano
+(Stwórz konto) --> (Zapisz konto) : Utwórz
+(Zapisz konto) --> (GUI użytkownika)
+
+(GUI użytkownika) --> (Złóż zamówienie)
+(GUI użytkownika) --> (Sprawdź wolne miejsca)
+(GUI użytkownika) --> (Sprawdź swoje zamówienia)
+(GUI użytkownika) --> (Zmień hasło)
+(GUI użytkownika) --> (Zmień login)
+
+(Logowanie - system) --> (GUI pracownika) : Zalogowano
+
+(GUI pracownika) --> (Złóż zamówienie)
+(GUI pracownika) --> (Sprawdź wolne miejsca)
+(GUI pracownika) --> (Sprawdź zamówienia)
+(GUI pracownika) --> (Zmień hasło)
+(GUI pracownika) --> (Zmień login)
+(GUI pracownika) --> (Zarządzaj kontami klientów)
+
+@enduml
