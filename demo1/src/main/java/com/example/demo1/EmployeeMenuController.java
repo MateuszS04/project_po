@@ -1,11 +1,24 @@
 package com.example.demo1;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class EmployeeMenuController {
+    @FXML
+    private ImageView employeeImageView;
+
+
+    public void initialize() {
+        load_image();
+    }
+
     public void place_an_orderButtonOnAction(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(ProjectApplication.class.getResource("place_order_employee.fxml"));
@@ -74,6 +87,20 @@ public class EmployeeMenuController {
             register_stage.setScene(scene);
             register_stage.show();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void load_image(){
+        try{
+            URL resources=getClass().getResource("/images/warehouse.jpg");
+            if(resources!=null){
+                Image image = new Image(resources.toExternalForm());
+                employeeImageView.setImage(image);
+            }else{
+                System.out.println("resources not found");
+            }
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

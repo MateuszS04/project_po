@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.EmployeeStorageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.EmployeeStorageController">
     <top>
-        <AnchorPane prefHeight="103.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="103.0" prefWidth="600.0" style="-fx-background-color: lightblue" BorderPane.alignment="CENTER">
             <children>
                 <Label layoutX="170.0" layoutY="32.0" text="Add items to storage">
                <font>
@@ -16,7 +16,7 @@
         </AnchorPane>
     </top>
    <left>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="297.0" prefWidth="612.0" style="-fx-background-color: lightblue" BorderPane.alignment="CENTER">
             <children>
                 <Label layoutX="29.0" layoutY="50.0" text="Storage start date (dd-mm-yyyy)" />
                 <Label layoutX="119.0" layoutY="210.0" prefHeight="19.0" prefWidth="367.0" />
