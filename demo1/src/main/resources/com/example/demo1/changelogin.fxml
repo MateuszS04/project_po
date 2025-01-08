@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.ChangeLogginController">
+    <top>
+        <AnchorPane prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
+            <children>
+                <Label layoutX="222.0" layoutY="19.0" prefHeight="40.0" prefWidth="176.0" text="Change Login">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
+            </children>
+        </AnchorPane>
+    </top>
+   <bottom>
+        <AnchorPane prefHeight="322.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
+            <children>
+                <Label layoutX="133.0" layoutY="34.0" text="New login" />
+            <Button fx:id="Change" layoutX="255.0" layoutY="157.0" mnemonicParsing="false" onAction="#ChangeButtonOnAction" text="Change">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Label fx:id="signup_message" layoutX="101.0" layoutY="232.0" prefHeight="18.0" prefWidth="363.0" />
+            <PasswordField fx:id="passwordField_1" layoutX="225.0" layoutY="39.0" />
+            <Label layoutX="133.0" layoutY="103.0" text="Confirm login" />
+            <PasswordField fx:id="passwordField_2" layoutX="225.0" layoutY="99.0" />
+            <Label fx:id="password_message" layoutX="95.0" layoutY="139.0" prefHeight="18.0" prefWidth="386.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="login_message" layoutX="114.0" layoutY="241.0" prefHeight="18.0" prefWidth="370.0" />
+            </children>
+        </AnchorPane>
+   </bottom>
+</BorderPane>

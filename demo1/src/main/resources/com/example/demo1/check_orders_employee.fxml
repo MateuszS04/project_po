@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.CheckMagazine_employeeController">
+    <top>
+        <AnchorPane prefHeight="110.0" prefWidth="600.0" BorderPane.alignment="CENTER" style="-fx-background-color: black">
+            <children>
+                <Label layoutX="147.0" layoutY="14.0" text="Check place in magazine" style="-fx-text-fill: yellow">
+               <font>
+                  <Font size="28.0" />
+               </font></Label>
+            <Label layoutX="85.0" layoutY="64.0" text="Enter customer login" style="-fx-text-fill: yellow"/>
+            <TextField fx:id="login" layoutX="224.0" layoutY="60.0" />
+                <Button fx:id="delete" layoutX="480.0" layoutY="60.0" mnemonicParsing="false" onAction="#deleteButtonOnAction" text="Delete Selected" style="-fx-background-color: yellow" />
+            <Button fx:id="check" layoutX="405.0" layoutY="60.0" mnemonicParsing="false" onAction="#checkButtonOnAction" text="check" style="-fx-background-color: yellow" />
+            <Label fx:id="magazine_message" layoutX="118.0" layoutY="87.0" prefHeight="18.0" prefWidth="411.0" style="-fx-text-fill: yellow" />
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <ListView fx:id="Magazine_list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" style="-fx-background-color: yellow"/>
+    </center>
+</BorderPane>

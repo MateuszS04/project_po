@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.EmployeeMenuController">
+    <top>
+        <AnchorPane prefHeight="90.0" prefWidth="604.0" BorderPane.alignment="CENTER" style="-fx-background-color: lightblue">
+            <children>
+                <Label layoutX="197.0" layoutY="23.0" text="Employee menu">
+               <font>
+                  <Font size="29.0" />
+               </font></Label>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="employeeImageView" fitWidth="600.0" fitHeight="400.0" preserveRatio="true"/>
+                <Button fx:id="place_an_order" layoutX="26.0" layoutY="53.0" mnemonicParsing="false" onAction="#place_an_orderButtonOnAction" text="Place an order">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <Button fx:id="check_free_space" layoutX="221.0" layoutY="53.0" mnemonicParsing="false" onAction="#check_free_spaceButtonOnAction" text="Check free space">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <Button fx:id="check_orders" layoutX="428.0" layoutY="53.0" mnemonicParsing="false" onAction="#check_ordersButtonOnAction" text="Check orders">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <Button fx:id="change_login" layoutX="248.0" layoutY="162.0" mnemonicParsing="false" onAction="#change_loginButtonOnAction" text="Change login">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <Button fx:id="check_clients_accounts" layoutX="26.0" layoutY="162.0" mnemonicParsing="false" onAction="#check_clients_accountsButtonOnAction" text="Check clients accounts">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+                <Button fx:id="chage_password" layoutX="414.0" layoutY="162.0" mnemonicParsing="false" onAction="#chage_passwordButtonOnAction" text="Chage password">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
